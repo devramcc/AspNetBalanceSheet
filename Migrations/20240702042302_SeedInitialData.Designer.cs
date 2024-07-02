@@ -4,6 +4,7 @@ using AspNetBalanceSheet.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspNetBalanceSheet.Migrations
 {
     [DbContext(typeof(BalanceSheetContext))]
-    partial class BalanceSheetContextModelSnapshot : ModelSnapshot
+    [Migration("20240702042302_SeedInitialData")]
+    partial class SeedInitialData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,17 +60,17 @@ namespace AspNetBalanceSheet.Migrations
                         {
                             ID = 1,
                             Account = "Cash",
-                            Amount = 1000000.00m,
-                            Category = "Liquid Assets",
-                            EntryType = "AKTIVA"
+                            Amount = 50.00m,
+                            Category = "Food",
+                            EntryType = "Expense"
                         },
                         new
                         {
                             ID = 2,
-                            Account = "Saving",
-                            Amount = 1000000.00m,
-                            Category = "Equity",
-                            EntryType = "PASIVA"
+                            Account = "Bank",
+                            Amount = 2000.00m,
+                            Category = "Salary",
+                            EntryType = "Income"
                         });
                 });
 
@@ -107,19 +110,19 @@ namespace AspNetBalanceSheet.Migrations
                         {
                             ID = 1,
                             Account = "Cash",
-                            Amount = 10000.00m,
-                            Date = new DateTime(2024, 7, 2, 12, 4, 11, 738, DateTimeKind.Local).AddTicks(1281),
+                            Amount = 50.00m,
+                            Date = new DateTime(2024, 7, 2, 11, 23, 2, 593, DateTimeKind.Local).AddTicks(4384),
                             IsFlip = false,
-                            TransactionType = "CREDIT"
+                            TransactionType = "Expense"
                         },
                         new
                         {
                             ID = 2,
-                            Account = "Expenses",
-                            Amount = 10000.00m,
-                            Date = new DateTime(2024, 7, 2, 12, 4, 11, 738, DateTimeKind.Local).AddTicks(1307),
+                            Account = "Bank",
+                            Amount = 2000.00m,
+                            Date = new DateTime(2024, 7, 2, 11, 23, 2, 593, DateTimeKind.Local).AddTicks(4397),
                             IsFlip = false,
-                            TransactionType = "DEBIT"
+                            TransactionType = "Income"
                         });
                 });
 #pragma warning restore 612, 618

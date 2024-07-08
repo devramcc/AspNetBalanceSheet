@@ -5,6 +5,10 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetBalanceSheet", "AspNetBalanceSheet.csproj", "{47276CD5-B831-41FF-AAB0-4225E1444504}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCBlazorBalanceSheet", "..\MVCBlazorBalanceSheet\MVCBlazorBalanceSheet.csproj", "{A6FC1BC7-85E9-4AAD-AFAC-026C27265FB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGrid", "..\DataGrid\DataGrid.csproj", "{8A3320D7-924A-466E-91DB-132B240680CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{47276CD5-B831-41FF-AAB0-4225E1444504}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47276CD5-B831-41FF-AAB0-4225E1444504}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47276CD5-B831-41FF-AAB0-4225E1444504}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6FC1BC7-85E9-4AAD-AFAC-026C27265FB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6FC1BC7-85E9-4AAD-AFAC-026C27265FB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6FC1BC7-85E9-4AAD-AFAC-026C27265FB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6FC1BC7-85E9-4AAD-AFAC-026C27265FB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A3320D7-924A-466E-91DB-132B240680CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A3320D7-924A-466E-91DB-132B240680CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A3320D7-924A-466E-91DB-132B240680CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A3320D7-924A-466E-91DB-132B240680CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

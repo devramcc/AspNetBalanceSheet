@@ -1,78 +1,80 @@
-@model (List<AspNetBalanceSheet.Models.Balance>, List<AspNetBalanceSheet.Models.BalanceTransaction>)
+@model (List<AspNetBalanceSheet.Models.Balance>, List<AspNetBalanceSheet.Models.Balance>, List<AspNetBalanceSheet.Models.BalanceTransaction>, decimal, decimal)
 
-<h2>Balances</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Entry Type</th>
-            <th>Category</th>
-            <th>Account</th>
-            <th>Amount</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var balance in Model.Item1)
-        {
-            <tr>
-                <td>@balance.ID</td>
-                <td>@balance.EntryType</td>
-                <td>@balance.Category</td>
-                <td>@balance.Account</td>
-                <td>@balance.Amount.ToString("Rp #,##0.00", new System.Globalization.CultureInfo("id-ID"))</td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-<h2>Transactions</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Date</th>
-            <th>Is Flip</th>
-            <th>Transaction Type</th>
-            <th>Account</th>
-            <th>Amount</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var transaction in Model.Item2)
-        {
-            <tr>
-                <td>@transaction.ID</td>
-                <td>@transaction.Date.ToString("dd MMMM yyyy")</td>
-                <td>@transaction.IsFlip</td>
-                <td>@transaction.TransactionType</td>
-                <td>@transaction.Account</td>
-                <td>@transaction.Amount.ToString("Rp #,##0.00", new System.Globalization.CultureInfo("id-ID"))</td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-<h2>Create Transaction</h2>
-<form asp-action="CreateTransaction" method="post">
-    <div class="form-group">
-        <label>Date</label>
-        <input type="date" name="Date" class="form-control" required />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="3" class="text-center bold-text">AKTIVA</th>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Category</th>
+                        <th class="text-center">Account</th>
+                        <th class="text-center">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var balance in Model.Item1)
+                    {
+                        <tr>
+                            <td>@balance.Category</td>
+                            <td>@balance.Account</td>
+                            <td>@balance.Amount.ToString("Rp #,##0.00", new System.Globalization.CultureInfo("id-ID"))</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="2" class="text-center"><strong>Total Aktiva</strong></td>
+                        <td><strong>@Model.Item4.ToString("Rp #,##0.00", new System.Globalization.CultureInfo("id-ID"))</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="3" class="text-center bold-text">PASIVA</th>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Category</th>
+                        <th class="text-center">Account</th>
+                        <th class="text-center">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var balance in Model.Item2)
+                    {
+                        <tr>
+                            <td>@balance.Category</td>
+                            <td>@balance.Account</td>
+                            <td>@balance.Amount.ToString("Rp #,##0.00", new System.Globalization.CultureInfo("id-ID"))</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="2" class="text-center"><strong>Total Pasiva</strong></td>
+                        <td><strong>@Model.Item5.ToString("Rp #,##0.00", new System.Globalization.CultureInfo("id-ID"))</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div class="form-group">
-        <label>Is Flip</label>
-        <input type="checkbox" name="IsFlip" class="" />
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>isFlip</th>
+                            <th>Flip Amount</th>
+                            <th>Transfer From</th>
+                            <th>Transfer To</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+            </table>
+        </div>
     </div>
-    <div class="form-group">
-        <label>Transfer From</label>
-        <input type="text" name="TransferFrom" class="form-control" required />
-    </div>
-    <div class="form-group">
-        <label>Transfer To</label>
-        <input type="text" name="TransferTo" class="form-control" required />
-    </div>
-    <div class="form-group">
-        <label>Amount</label>
-        <input type="number" step="1000" name="Amount" class="form-control" required />
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>

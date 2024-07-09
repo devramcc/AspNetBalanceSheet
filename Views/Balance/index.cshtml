@@ -77,4 +77,62 @@
             </table>
         </div>
     </div>
+        <div class="row">
+        <div class="col-md-6">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="3" class="text-center bold-text">DEBIT</th>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Category</th>
+                        <th class="text-center">Account</th>
+                        <th class="text-center">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var balance in Model.Item1)
+                    {
+                        <tr>
+                            <td>@balance.Category</td>
+                            <td>@balance.Account</td>
+                            <td>@balance.Amount.ToString("Rp #,##0.00", new System.Globalization.CultureInfo("id-ID"))</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="2" class="text-center"><strong>Total Debit</strong></td>
+                        <td><strong>@Model.Item4.ToString("Rp #,##0.00", new System.Globalization.CultureInfo("id-ID"))</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="3" class="text-center bold-text">CREDIT</th>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Category</th>
+                        <th class="text-center">Account</th>
+                        <th class="text-center">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var balance in Model.Item2)
+                    {
+                        <tr>
+                            <td>@balance.Category</td>
+                            <td>@balance.Account</td>
+                            <td>@balance.Amount.ToString("Rp #,##0.00", new System.Globalization.CultureInfo("id-ID"))</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="2" class="text-center"><strong>Total Credit</strong></td>
+                        <td><strong>@Model.Item5.ToString("Rp #,##0.00", new System.Globalization.CultureInfo("id-ID"))</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

@@ -16,7 +16,6 @@ namespace AspNetBalanceSheet.Controllers
         public IActionResult Index()
         {
             var balances = _context.Balances.ToList();
-            var transactions = _context.BalanceTransactions.ToList();
 
             var aktiva = balances.Where(b => b.EntryType == "AKTIVA").ToList();
             var pasiva = balances.Where(b => b.EntryType == "PASIVA").ToList();
@@ -24,7 +23,9 @@ namespace AspNetBalanceSheet.Controllers
             var totalAktiva = aktiva.Sum(b => b.Amount);
             var totalPasiva = pasiva.Sum(b => b.Amount);
 
-            return View((aktiva, pasiva, transactions, totalAktiva, totalPasiva));
+            var transactions = _context.BalanceRecords.ToList();
+
+            return View((aktiva, pasiva, totalAktiva, totalPasiva, transactions));
         }
 
         // [HttpPost]

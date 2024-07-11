@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AspNetBalanceSheet.Models
 {
@@ -7,15 +8,17 @@ namespace AspNetBalanceSheet.Models
         [Key]
         public int ID { get; set; }
 
-        [Required]
-        public DateTime Date { get; set; }
-
-        [Required]
-        public Boolean IsFlip { get; set; }
+        [ForeignKey("BalanceRecord")]
+        public int BalanceRecordId { get; set; }
+        public BalanceRecord BalanceRecord { get; set; }
 
         [Required]
         [MaxLength(20)]
         public string TransactionType { get; set; }
+
+        [Required]
+        [MaxLength(20)]
+        public string Category { get; set; }
 
         [Required]
         [MaxLength(20)]

@@ -27,50 +27,50 @@ namespace AspNetBalanceSheet.Controllers
             return View((aktiva, pasiva, transactions, totalAktiva, totalPasiva));
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult CreateTransaction(DateTime date, bool isFlip, string transferFrom, string transferTo, decimal amount)
-        {
-            if (ModelState.IsValid)
-            {
-                var creditTransaction = new BalanceTransaction
-                {
-                    Date = date,
-                    IsFlip = isFlip,
-                    Account = transferFrom,
-                    TransactionType = "CREDIT",
-                    Amount = amount * -1
-                };
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+        // public IActionResult CreateTransaction(DateTime date, bool isFlip, string transferFrom, string transferTo, decimal amount)
+        // {
+        //     if (ModelState.IsValid)
+        //     {
+        //         var creditTransaction = new BalanceRecord
+        //         {
+        //             Date = date,
+        //             IsFlip = isFlip,
+        //             Account = transferFrom,
+        //             TransactionType = "CREDIT",
+        //             Amount = amount * -1
+        //         };
 
-                var debitTransaction = new BalanceTransaction
-                {
-                    Date = date,
-                    IsFlip = isFlip,
-                    TransactionType = "DEBIT",
-                    Account = transferTo,
-                    Amount = amount
-                };
+        //         var debitTransaction = new BalanceRecord
+        //         {
+        //             Date = date,
+        //             IsFlip = isFlip,
+        //             TransactionType = "DEBIT",
+        //             Account = transferTo,
+        //             Amount = amount
+        //         };
 
-                var balanceFrom = _context.Balances.FirstOrDefault(b => b.Account == transferFrom);
-                if (balanceFrom != null)
-                {
-                    balanceFrom.Amount += creditTransaction.Amount;
-                }
+        //         var balanceFrom = _context.Balances.FirstOrDefault(b => b.Account == transferFrom);
+        //         if (balanceFrom != null)
+        //         {
+        //             balanceFrom.Amount += creditTransaction.Amount;
+        //         }
 
-                // Update Balance for transferTo
-                var balanceTo = _context.Balances.FirstOrDefault(b => b.Account == transferTo);
-                if (balanceTo != null)
-                {
-                    balanceTo.Amount += debitTransaction.Amount;
-                }
+        //         // Update Balance for transferTo
+        //         var balanceTo = _context.Balances.FirstOrDefault(b => b.Account == transferTo);
+        //         if (balanceTo != null)
+        //         {
+        //             balanceTo.Amount += debitTransaction.Amount;
+        //         }
 
-                _context.BalanceTransactions.Add(creditTransaction);
-                _context.BalanceTransactions.Add(debitTransaction);
-                _context.SaveChanges();
+        //         _context.BalanceTransactions.Add(creditTransaction);
+        //         _context.BalanceTransactions.Add(debitTransaction);
+        //         _context.SaveChanges();
 
-                return RedirectToAction(nameof(Index));
-            }
-            return RedirectToAction(nameof(Index));
-        }
+        //         return RedirectToAction(nameof(Index));
+        //     }
+        //     return RedirectToAction(nameof(Index));
+        // }
     }
 }
